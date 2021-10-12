@@ -35,8 +35,8 @@ self.addEventListener('install', function (e) {
 });
 
 // Delete outdated caches
-self.addEventListener('activate', function (evt) {
-  evt.waitUntil(
+self.addEventListener('activate', function (e) {
+  e.waitUntil(
     caches.keys().then(keyList => {
       return Promise.all(
         keyList.map(key => {
@@ -52,30 +52,30 @@ self.addEventListener('activate', function (evt) {
 });
 
 // Respond with cached resources
-self.addEventListener('fetch', function (evt) {
-  if (evt.request.url.includes('/api/transaction')) {
-    console.log('[Service Worker] Fetch (data)', evt.request.url);
+self.addEventListener('fetch', function (e) {
+  if (e.request.url.includes('/api/transaction')) {
+    console.log('[Service Worker] Fetch (data)', e.request.url);
 
-    evt.respondWith(
+    e.respondWith(
       caches.open(DATA_CACHE_NAME).then(cache => {
-        return fetch(evt.request)
+        return fetch(e.request)
           .then(response => {
             if (response.status === 200) {
-              cache.put(evt.request.url, response.clone());
+              cache.put(e.request.url, response.clone());
             }
             return response;
           })
           .catch(err => {
-            return cache.match(evt.request);
+            return cache.match(e.request);
           });
       })
     );
     return;
   }
-  evt.respondWith(
+  e.respondWith(
     caches.open(CACHE_NAME).then(cache => {
-      return cache.match(evt.request).then(response => {
-        return response || fetch(evt.request);
+      return cache.match(e.request).then(response => {
+        return response || fetch(e.request);
       });
     })
   );
