@@ -20,7 +20,7 @@ Welcome to Easy Budget Tracker, a progressive web application (PWA) that allows 
 
 ## Links
 
-- **[GitHub Repo](https://github.com/mjos7/easy-budget-tracker)**
+- [GitHub Repo](https://github.com/mjos7/easy-budget-tracker)
 - [Deployed App - Heroku](https://desolate-brushlands-46331.herokuapp.com/)
 
 ## Installation
