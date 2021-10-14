@@ -1,4 +1,7 @@
 {
+  "name": "Easy Budget Tracker",
+  "short_name": "Budget Tracker",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "icons/icon-72x72.png",
@@ -41,9 +44,6 @@
       "type": "image/png"
     }
   ],
-  "name": "Easy Budget Tracker",
-  "short_name": "Budget Tracker",
-  "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "start_url": "/",
   "description": "An app that allows you to manage your budget expenses and income.",
